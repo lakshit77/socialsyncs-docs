@@ -3,7 +3,7 @@ title: Uploads & Storage
 description: 'Local filesystem vs Cloudflare R2 for media uploads'
 ---
 
-Postiz writes user-uploaded media (post images, avatars, generated
+SocialSyncs writes user-uploaded media (post images, avatars, generated
 content) through a single storage abstraction. Pick one of two backends.
 
 ## Pick a backend
@@ -16,7 +16,7 @@ STORAGE_PROVIDER="cloudflare" # write to Cloudflare R2
 
 ## Local filesystem
 
-Set the path where Postiz should write:
+Set the path where SocialSyncs should write:
 
 ```env
 STORAGE_PROVIDER="local"
@@ -39,7 +39,7 @@ In `docker-compose.yaml`:
 
 ```yaml
 services:
-  postiz:
+  socialsyncs:
     environment:
       STORAGE_PROVIDER: "local"
       UPLOAD_DIRECTORY: "/uploads"
@@ -60,7 +60,7 @@ TikTok (and a few others) fetch media via "pull from URL" rather than
 multipart upload. Your local `/uploads` path must therefore be
 reachable from the public internet over HTTPS for those providers to
 work. If your deployment is internet-facing through a reverse proxy
-with TLS, you're fine. If Postiz is on a private network, those
+with TLS, you're fine. If SocialSyncs is on a private network, those
 providers will fail and you should use [Cloudflare R2](/configuration/r2)
 or a CDN instead.
 

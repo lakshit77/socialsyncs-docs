@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "maple",
-  "name": "Postiz Documentation",
+  "name": "SocialSyncs Documentation",
   "colors": {
     "primary": "#9900e6",
     "light": "#b266ff",
@@ -301,16 +301,6 @@
           "anchor": "GitHub",
           "href": "https://github.com/gitroomhq/postiz-app",
           "icon": "github"
-        },
-        {
-          "anchor": "Discord",
-          "href": "https://discord.postiz.com",
-          "icon": "discord"
-        },
-        {
-          "anchor": "YouTube",
-          "href": "https://youtube.com/@postizofficial",
-          "icon": "youtube"
         }
       ]
     }
@@ -320,17 +310,11 @@
     "dark": "/logo/dark.png"
   },
   "navbar": {
-    "links": [
-      {
-        "icon": "discord",
-        "label": "Discord",
-        "href": "https://discord.postiz.com"
-      }
-    ],
+    "links": [],
     "primary": {
       "type": "button",
       "label": "Register to the cloud",
-      "href": "https://postiz.com"
+      "href": "https://socialsyncs.co"
     }
   },
   "contextual": {
@@ -344,8 +328,7 @@
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/gitroomhq/postiz-app",
-      "discord": "https://discord.postiz.com"
+      "github": "https://github.com/gitroomhq/postiz-app"
     }
   }
 }

@@ -1,11 +1,11 @@
 ---
 title: WebSockets, HMR, and Dev Tunnels
-description: 'Running Postiz behind ngrok or a reverse proxy with WebSocket support'
+description: 'Running SocialSyncs behind ngrok or a reverse proxy with WebSocket support'
 ---
 
 ## Production reverse proxy
 
-How you reverse-proxy depends on how you're running Postiz:
+How you reverse-proxy depends on how you're running SocialSyncs:
 
 - **Official Docker image** (`ghcr.io/gitroomhq/postiz-app`): frontend
   and backend are bundled inside one container and exposed on a single
@@ -68,7 +68,7 @@ few seconds.
 
 When `FRONTEND_URL` is plain HTTP, several social providers
 (Slack, TikTok, Threads, VK, Instagram standalone) refuse to register
-your redirect URI. Postiz works around this by wrapping the redirect
+your redirect URI. SocialSyncs works around this by wrapping the redirect
 through `https://redirectmeto.com/`:
 
 ```
@@ -80,7 +80,7 @@ immediately redirects to the HTTP target — satisfying the provider's
 HTTPS-only validation without needing your dev environment to have a
 TLS cert.
 
-**You only see this in dev.** Once `FRONTEND_URL` is HTTPS, Postiz
+**You only see this in dev.** Once `FRONTEND_URL` is HTTPS, SocialSyncs
 skips `redirectmeto` entirely and uses your URL directly.
 
 If you don't want `redirectmeto` in the middle even in dev, terminate
