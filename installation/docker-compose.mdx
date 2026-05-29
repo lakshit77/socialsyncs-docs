@@ -1,6 +1,6 @@
 ---
 title: Docker Compose
-description: 'Install Postiz using Docker Compose'
+description: 'Install SocialSyncs using Docker Compose'
 ---
 
 <Note>
@@ -9,12 +9,12 @@ Watch the Tutorial for docker-compose install: [https://m.youtube.com/watch?v=A6
 
 <Warning>
     <strong>Warning:</strong> Please read this migration guide, on how to upgrade from v2.11.2 to v2.12.0+ for Temporal:
-    https://docs.postiz.com/installation/migration
+    https://docs.socialsyncs.co/installation/migration
 </Warning>
 
 ## Docker Compose
 
-This guide assumes that you have docker installed, with a reasonable amount of resources to run Postiz. This Docker Compose setup has been tested with;
+This guide assumes that you have docker installed, with a reasonable amount of resources to run SocialSyncs. This Docker Compose setup has been tested with;
 
 - Virtual Machine, Ubuntu 24.04, 2Gb RAM, 2 vCPUs.
 
@@ -22,10 +22,10 @@ This guide assumes that you have docker installed, with a reasonable amount of r
 
 ### Configuration uses environment variables
 
-The docker containers for Postiz are entirely configured with environment variables.
+The docker containers for SocialSyncs are entirely configured with environment variables.
 
 - **Option A** - environment variables in your `docker-compose.yml` file
-- **Option B** - environment variables in a `postiz.env` file mounted in `/config` for the Postiz container only
+- **Option B** - environment variables in a `postiz.env` file mounted in `/config` for the SocialSyncs container only
 - **Option C** - environment variables in a `.env` file next to your `docker-compose.yml` file (not recommended).
 
 ... or a mixture of the above options!
@@ -58,9 +58,9 @@ of configuration settings.
 
 ```yaml
 services:
-  postiz:
+  socialsyncs:
     image: ghcr.io/gitroomhq/postiz-app:latest
-    container_name: postiz
+    container_name: socialsyncs
     restart: always
     environment:
       # === Required Settings
@@ -68,8 +68,8 @@ services:
       FRONTEND_URL: 'http://localhost:4007'
       NEXT_PUBLIC_BACKEND_URL: 'http://localhost:4007/api'
       JWT_SECRET: 'random string that is unique to every install - just type random characters here!'
-      DATABASE_URL: 'postgresql://postiz-user:postiz-password@postiz-postgres:5432/postiz-db-local'
-      REDIS_URL: 'redis://postiz-redis:6379'
+      DATABASE_URL: 'postgresql://postiz-user:postiz-password@socialsyncs-postgres:5432/postiz-db-local'
+      REDIS_URL: 'redis://socialsyncs-redis:6379'
       BACKEND_INTERNAL_URL: 'http://localhost:3000'
       TEMPORAL_ADDRESS: "temporal:7233"
       IS_GENERAL: 'true'
@@ -172,22 +172,22 @@ services:
       # LINK_DRIP_SHORT_LINK_DOMAIN: "dripl.ink"
 
     volumes:
-      - postiz-config:/config/
+      - socialsyncs-config:/config/
       - postiz-uploads:/uploads/
     ports:
       - "4007:5000"
     networks:
-      - postiz-network
+      - socialsyncs-network
       - temporal-network
     depends_on:
-      postiz-postgres:
+      socialsyncs-postgres:
         condition: service_healthy
-      postiz-redis:
+      socialsyncs-redis:
         condition: service_healthy
 
-  postiz-postgres:
+  socialsyncs-postgres:
     image: postgres:17-alpine
-    container_name: postiz-postgres
+    container_name: socialsyncs-postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: postiz-password
@@ -196,15 +196,15 @@ services:
     volumes:
       - postgres-volume:/var/lib/postgresql/data
     networks:
-      - postiz-network
+      - socialsyncs-network
     healthcheck:
       test: pg_isready -U postiz-user -d postiz-db-local
       interval: 10s
       timeout: 3s
       retries: 3
-  postiz-redis:
+  socialsyncs-redis:
     image: redis:7.2
-    container_name: postiz-redis
+    container_name: socialsyncs-redis
     restart: always
     healthcheck:
       test: redis-cli ping
@@ -212,9 +212,9 @@ services:
       timeout: 3s
       retries: 3
     volumes:
-      - postiz-redis-data:/data
+      - socialsyncs-redis-data:/data
     networks:
-      - postiz-network
+      - socialsyncs-network
 
   # For Application Monitoring / Debugging
   spotlight:
@@ -224,7 +224,7 @@ services:
       - 8969:8969/tcp
     image: ghcr.io/getsentry/spotlight:latest
     networks:
-      - postiz-network
+      - socialsyncs-network
 
   # -----------------------
   # Temporal Stack
@@ -314,17 +314,17 @@ volumes:
   postgres-volume:
     external: false
 
-  postiz-redis-data:
+  socialsyncs-redis-data:
     external: false
 
-  postiz-config:
+  socialsyncs-config:
     external: false
 
   postiz-uploads:
     external: false
 
 networks:
-  postiz-network:
+  socialsyncs-network:
     external: false
   temporal-network:
     driver: bridge
@@ -333,7 +333,7 @@ networks:
 
 ## How to use docker compose
 
-Save the file contents to `docker-compose.yml` in your directory you create for postiz.
+Save the file contents to `docker-compose.yml` in your directory you create for socialsyncs.
 
 Run `docker compose up` to start the services.
 
@@ -345,7 +345,7 @@ variables.
 
 Look through the logs for startup errors, and if you have problems, check out the [support](/support) page.
 
-If everything looks good, then you can access the Postiz web interface at https://postiz.your-server.com
+If everything looks good, then you can access the SocialSyncs web interface at https://socialsyncs.your-server.com
 
 <Snippet file="docker-envvar-apps.mdx" />
 

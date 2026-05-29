@@ -1,6 +1,6 @@
 ---
 title: OIDC Configuration
-description: 'How to configure OIDC for Postiz'
+description: 'How to configure OIDC for SocialSyncs'
 ---
 
 <Warning>
@@ -15,7 +15,7 @@ We will use [Authentik](https://goauthentik.io/) as an OIDC provider example, wi
   <Step title="Create an Application/Provider on the Authentik side">
     You will find the following important information:
 
-    - `redirect_uri` => `https://postiz.yourserver.com/settings`
+    - `redirect_uri` => `https://socialsyncs.yourserver.com/settings`
     - `client_id` => `randomclientid`
     - `client_secret` => `randomclientsecret`
     - `auth_url` => `https://authentik.example.com/application/o/authorize`

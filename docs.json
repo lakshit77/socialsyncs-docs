@@ -3,11 +3,11 @@
   "theme": "maple",
   "name": "SocialSyncs Documentation",
   "colors": {
-    "primary": "#9900e6",
-    "light": "#b266ff",
-    "dark": "#7700b3"
+    "primary": "#2B7DE9",
+    "light": "#4A9AF5",
+    "dark": "#0B3D8C"
   },
-  "favicon": "/favicon.ico",
+  "favicon": "/logo/socialsyncs-icon.svg",
   "navigation": {
     "tabs": [
       {
@@ -306,8 +306,8 @@
     }
   },
   "logo": {
-    "light": "/logo/light.png",
-    "dark": "/logo/dark.png"
+    "light": "/logo/socialsyncs-icon.svg",
+    "dark": "/logo/socialsyncs-icon.svg"
   },
   "navbar": {
     "links": [],
