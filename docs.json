@@ -77,39 +77,14 @@
                 "group": "Social Platforms",
                 "expanded": true,
                 "pages": [
-                  "providers/x-twitter",
-                  "providers/linkedin",
-                  "providers/linkedin-page",
-                  "providers/facebook",
-                  "providers/instagram",
-                  "providers/threads",
-                  "providers/bluesky",
-                  "providers/mastodon",
-                  "providers/google-my-business",
-                  "providers/mewe",
-                  "providers/farcaster"
+                  "providers/instagram"
                 ]
               },
               {
                 "group": "Video Platforms",
                 "expanded": true,
                 "pages": [
-                  "providers/youtube",
-                  "providers/tiktok"
-                ]
-              },
-              {
-                "group": "Other Platforms",
-                "expanded": true,
-                "pages": [
-                  "providers/reddit",
-                  "providers/pinterest",
-                  "providers/discord",
-                  "providers/slack",
-                  "providers/telegram",
-                  "providers/dribbble",
-                  "providers/skool",
-                  "providers/whop"
+                  "providers/youtube"
                 ]
               }
             ]
@@ -187,40 +162,10 @@
             ]
           },
           {
-            "group": "Provider Settings (25 with custom settings)",
+            "group": "Provider Settings",
             "pages": [
-              "public-api/providers/x",
-              "public-api/providers/linkedin",
-              "public-api/providers/linkedin-page",
-              "public-api/providers/facebook",
-              "public-api/providers/instagram",
               "public-api/providers/instagram-standalone",
-              "public-api/providers/threads",
-              "public-api/providers/bluesky",
-              "public-api/providers/mastodon",
-              "public-api/providers/warpcast",
-              "public-api/providers/nostr",
-              "public-api/providers/vk",
-              "public-api/providers/youtube",
-              "public-api/providers/tiktok",
-              "public-api/providers/reddit",
-              "public-api/providers/lemmy",
-              "public-api/providers/pinterest",
-              "public-api/providers/discord",
-              "public-api/providers/slack",
-              "public-api/providers/telegram",
-              "public-api/providers/dribbble",
-              "public-api/providers/medium",
-              "public-api/providers/devto",
-              "public-api/providers/hashnode",
-              "public-api/providers/wordpress",
-              "public-api/providers/listmonk",
-              "public-api/providers/gmb",
-              "public-api/providers/whop",
-              "public-api/providers/skool",
-              "public-api/providers/kick",
-              "public-api/providers/twitch",
-              "public-api/providers/moltbook"
+              "public-api/providers/youtube"
             ]
           }
         ]
