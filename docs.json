@@ -136,6 +136,18 @@
             ]
           },
           {
+            "group": "Automations",
+            "pages": [
+              "public-api/automations/list",
+              "public-api/automations/create",
+              "public-api/automations/get",
+              "public-api/automations/update",
+              "public-api/automations/toggle-active",
+              "public-api/automations/delete",
+              "public-api/automations/logs"
+            ]
+          },
+          {
             "group": "Notifications",
             "pages": [
               "public-api/notifications/list"

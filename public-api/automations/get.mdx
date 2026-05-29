@@ -1,0 +1,23 @@
+---
+title: 'Get Automation'
+description: 'Get a single automation workflow by ID'
+---
+
+## Request
+
+```bash
+curl -H "Authorization: your-api-key" \
+  "https://api.postiz.com/public/v1/automations/{id}"
+```
+
+## Path Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `id` | string | The automation ID |
+
+## Response
+
+Returns the automation object including its full `actionConfig` with the workflow event tree.
+
+Returns `404` if the automation does not belong to your organization.

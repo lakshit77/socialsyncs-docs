@@ -213,6 +213,120 @@ Execute helper functions for video generators. Use this to fetch required data b
 
 ---
 
+## automationList
+
+List all automation workflows for your organization, optionally filtered by integration.
+
+**Parameters:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `integrationId` | string | No | Filter by a specific channel ID |
+
+**Returns:** Array of automation objects with `id`, `name`, `integrationId`, `triggerType`, `active`, `successCount`, `failureCount`.
+
+---
+
+## automationCreate
+
+Create a new automation workflow.
+
+**Parameters:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `workflow` | object | Yes | Full workflow object — same shape as the [Create Automation](/public-api/automations/create) API body |
+
+**Returns:** The created automation object including its assigned `id`.
+
+---
+
+## automationUpdate
+
+Update an existing automation workflow by ID.
+
+**Parameters:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `id` | string | Yes | Automation ID to update |
+| `workflow` | object | Yes | Full replacement workflow object |
+
+**Returns:** The updated automation object.
+
+---
+
+## automationToggleActive
+
+Enable or disable an automation without changing its configuration.
+
+**Parameters:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `id` | string | Yes | Automation ID |
+| `active` | boolean | Yes | `true` to enable, `false` to disable |
+
+**Returns:** The updated automation object.
+
+---
+
+## automationDelete
+
+Soft-delete an automation workflow. Execution logs are preserved.
+
+**Parameters:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `id` | string | Yes | Automation ID to delete |
+
+**Returns:** Confirmation of deletion.
+
+<Warning>
+This is a destructive action. The automation will immediately stop firing on incoming events.
+</Warning>
+
+---
+
+## automationLogs
+
+Retrieve paginated execution logs for an automation.
+
+**Parameters:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `id` | string | Yes | Automation ID |
+| `cursor` | string | No | Pagination cursor from a previous call |
+| `limit` | number | No | Number of logs to return (1–200, default: 50) |
+
+**Returns:**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `items` | array | Log entries with `state` (`SUCCESS`/`FAILED`), `matchedKeyword`, `errorMessage`, `createdAt` |
+| `nextCursor` | string \| null | Pass to next call for the next page |
+
+---
+
+## automationTest
+
+Dry-run the keyword matcher for an automation against a synthetic event. **No actions are executed** — no DM is sent, no comment is replied to, no log is written.
+
+**Parameters:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `id` | string | Yes | Automation ID to test |
+| `sampleText` | string | Yes | Sample text to match against (e.g. a comment or DM body, max 2000 chars) |
+| `samplePostId` | string | No | Sample post ID for post-scoped trigger testing |
+| `sampleUsername` | string | No | Sample sender username |
+
+**Returns:** The match decision — whether the automation would have fired and which keyword matched.
+
+---
+
 ## generateVideoTool
 
 Generate a video to use as a post attachment.

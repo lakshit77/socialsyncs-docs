@@ -1,0 +1,35 @@
+---
+title: 'List Automations'
+description: 'Get all automation workflows for your organization'
+---
+
+## Request
+
+<ParamField query="integrationId" type="string">
+  Filter automations by a specific integration (channel) ID. Omit to return all automations across all channels.
+</ParamField>
+
+```bash
+curl -H "Authorization: your-api-key" \
+  "https://api.postiz.com/public/v1/automations"
+
+# With filter
+curl -H "Authorization: your-api-key" \
+  "https://api.postiz.com/public/v1/automations?integrationId=your-integration-id"
+```
+
+## Response
+
+Returns an array of automation objects.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | string | Automation ID |
+| `name` | string | Display name |
+| `integrationId` | string | The channel this automation is attached to |
+| `triggerType` | string | `COMMENT`, `STORY_REPLY`, or `DM_KEYWORD` |
+| `actionType` | string | `SEND_DM` or `REPLY_TO_COMMENT` |
+| `active` | boolean | Whether the automation is currently enabled |
+| `successCount` | number | Total successful executions |
+| `failureCount` | number | Total failed executions |
+| `createdAt` | string | ISO 8601 creation timestamp |

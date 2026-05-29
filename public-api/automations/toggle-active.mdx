@@ -1,0 +1,36 @@
+---
+title: 'Toggle Active'
+description: 'Enable or disable an automation without changing its configuration'
+---
+
+## Request
+
+```bash
+# Disable
+curl -X PATCH "https://api.postiz.com/public/v1/automations/{id}/active" \
+  -H "Authorization: your-api-key" \
+  -H "Content-Type: application/json" \
+  -d '{"active": false}'
+
+# Re-enable
+curl -X PATCH "https://api.postiz.com/public/v1/automations/{id}/active" \
+  -H "Authorization: your-api-key" \
+  -H "Content-Type: application/json" \
+  -d '{"active": true}'
+```
+
+## Path Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `id` | string | The automation ID |
+
+## Body Parameters
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `active` | boolean | Yes | `true` to enable, `false` to disable |
+
+## Response
+
+Returns the updated automation object with the new `active` value.
