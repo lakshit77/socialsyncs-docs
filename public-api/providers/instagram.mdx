@@ -95,7 +95,7 @@ To find audio IDs, use the [trigger endpoint](/public-api/integrations/trigger)
 with the `audioSearch` tool:
 
 ```bash
-curl -X POST https://api.socialsyncs.co/public/v1/integration-trigger/{integrationId} \
+curl -X POST https://app.socialsyncs.co/api/public/v1/integration-trigger/{integrationId} \
   -H "Authorization: your-api-key" \
   -H "Content-Type: application/json" \
   -d '{"methodName": "audioSearch", "data": {"q": "summer vibes", "type": "music"}}'

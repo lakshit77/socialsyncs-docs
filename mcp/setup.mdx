@@ -11,13 +11,13 @@ The fastest way to add the SocialSyncs MCP server to Claude Code is with a singl
 claude mcp add socialsyncs \
   --transport http \
   --header "Authorization: Bearer your-api-key" \
-  "https://api.socialsyncs.co/mcp"
+  "https://app.socialsyncs.co/api/mcp"
 ```
 
 Or use the API-key-in-URL form (no header needed):
 
 ```bash
-claude mcp add socialsyncs --transport http "https://api.socialsyncs.co/mcp/your-api-key"
+claude mcp add socialsyncs --transport http "https://app.socialsyncs.co/api/mcp/your-api-key"
 ```
 
 Replace `your-api-key` with your key from **Settings → Public API**.
@@ -29,7 +29,7 @@ Alternatively, add it manually to `.mcp.json` in your project root:
   "mcpServers": {
     "socialsyncs": {
       "type": "http",
-      "url": "https://api.socialsyncs.co/mcp/your-api-key"
+      "url": "https://app.socialsyncs.co/api/mcp/your-api-key"
     }
   }
 }
@@ -83,7 +83,7 @@ Add the following to your Claude Desktop MCP configuration file:
       "mcpServers": {
         "socialsyncs": {
           "type": "http",
-          "url": "https://api.socialsyncs.co/mcp/your-api-key"
+          "url": "https://app.socialsyncs.co/api/mcp/your-api-key"
         }
       }
     }
@@ -97,7 +97,7 @@ Add the following to your Claude Desktop MCP configuration file:
       "mcpServers": {
         "socialsyncs": {
           "type": "http",
-          "url": "https://api.socialsyncs.co/mcp/your-api-key"
+          "url": "https://app.socialsyncs.co/api/mcp/your-api-key"
         }
       }
     }
@@ -111,7 +111,7 @@ The Bearer-token transport works too — pick whichever your client supports bet
 
 ```bash
 claude mcp add socialsyncs --transport http \
-  --url https://api.socialsyncs.co/mcp \
+  --url https://app.socialsyncs.co/api/mcp \
   --header "Authorization: Bearer your-api-key"
 ```
 
@@ -121,24 +121,24 @@ In Cursor, go to **Settings > MCP** and add a new server:
 
 - **Name:** socialsyncs
 - **Type:** HTTP
-- **URL:** `https://api.socialsyncs.co/mcp/your-api-key`
+- **URL:** `https://app.socialsyncs.co/api/mcp/your-api-key`
 
 ## Other MCP Clients
 
 Any MCP-compatible client can connect to SocialSyncs. Use the streamable HTTP transport:
 
-- **URL:** `https://api.socialsyncs.co/mcp/your-api-key`
+- **URL:** `https://app.socialsyncs.co/api/mcp/your-api-key`
 - **Transport:** Streamable HTTP
 
 Or, if your client supports Bearer token authentication:
 
-- **URL:** `https://api.socialsyncs.co/mcp`
+- **URL:** `https://app.socialsyncs.co/api/mcp`
 - **Transport:** Streamable HTTP
 - **Authorization:** `Bearer your-api-key`
 
 ## Self-Hosted
 
-For self-hosted instances, replace `https://api.socialsyncs.co` with your `NEXT_PUBLIC_BACKEND_URL`:
+For self-hosted instances, replace `https://app.socialsyncs.co/api` with your `NEXT_PUBLIC_BACKEND_URL`:
 
 ```
 https://your-server.com/mcp/your-api-key

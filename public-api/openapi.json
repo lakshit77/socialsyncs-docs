@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://api.socialsyncs.co/public/v1",
+      "url": "https://app.socialsyncs.co/api/public/v1",
       "description": "SocialSyncs Cloud"
     },
     {

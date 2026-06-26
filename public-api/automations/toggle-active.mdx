@@ -7,13 +7,13 @@ description: 'Enable or disable an automation without changing its configuration
 
 ```bash
 # Disable
-curl -X PATCH "https://api.socialsyncs.co/public/v1/automations/{id}/active" \
+curl -X PATCH "https://app.socialsyncs.co/api/public/v1/automations/{id}/active" \
   -H "Authorization: your-api-key" \
   -H "Content-Type: application/json" \
   -d '{"active": false}'
 
 # Re-enable
-curl -X PATCH "https://api.socialsyncs.co/public/v1/automations/{id}/active" \
+curl -X PATCH "https://app.socialsyncs.co/api/public/v1/automations/{id}/active" \
   -H "Authorization: your-api-key" \
   -H "Content-Type: application/json" \
   -d '{"active": true}'

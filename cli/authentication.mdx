@@ -45,7 +45,7 @@ OAuth2 credentials take priority over the API key when both are present.
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
 | `POSTIZ_API_KEY` | No* | - | Your SocialSyncs API key |
-| `POSTIZ_API_URL` | No | `https://api.socialsyncs.co` | Custom API endpoint (for self-hosted SocialSyncs) |
+| `POSTIZ_API_URL` | No | `https://app.socialsyncs.co/api` | Custom API endpoint (for self-hosted SocialSyncs) |
 | `POSTIZ_AUTH_SERVER` | No | `https://cli-auth.socialsyncs.co` | Custom auth server URL (for self-hosted auth server) |
 
 *Either OAuth2 (via `socialsyncs auth:login`) or `POSTIZ_API_KEY` is required.
@@ -118,8 +118,8 @@ export SERVER_URL="https://your-server-domain.com"
 | `POSTIZ_OAUTH_CLIENT_SECRET` | Yes | - | OAuth app client secret from SocialSyncs |
 | `PORT` | No | `3111` | Server port |
 | `SERVER_URL` | No | `http://localhost:{PORT}` | Public URL of this server |
-| `POSTIZ_FRONTEND_URL` | No | `https://platform.socialsyncs.co` | SocialSyncs frontend URL for OAuth redirects |
-| `POSTIZ_API_URL` | No | `https://api.socialsyncs.co` | SocialSyncs API URL for token exchange |
+| `POSTIZ_FRONTEND_URL` | No | `https://app.socialsyncs.co` | SocialSyncs frontend URL for OAuth redirects |
+| `POSTIZ_API_URL` | No | `https://app.socialsyncs.co/api` | SocialSyncs API URL for token exchange |
 
 ### 5. Run the Server
 

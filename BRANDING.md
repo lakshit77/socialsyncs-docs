@@ -25,8 +25,8 @@ Mintlify docs have **no `branding.ts`** like the app (`postiz-app/apps/frontend/
 
 | Purpose | URL |
 |---|---|
-| API base | `https://api.socialsyncs.co` |
-| Dashboard / get API key | `https://platform.socialsyncs.co` |
+| API base | `https://app.socialsyncs.co/api` |
+| Dashboard / get API key | `https://app.socialsyncs.co` |
 | Media / uploads CDN | `https://uploads.socialsyncs.co` |
 | Docs | `https://docs.socialsyncs.co` |
 
