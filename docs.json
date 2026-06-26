@@ -41,6 +41,7 @@
               "configuration/emails",
               "configuration/uploads",
               "configuration/r2",
+              "configuration/storage",
               "configuration/polotno",
               "configuration/oauth",
               "configuration/chrome-extension"
@@ -69,6 +70,14 @@
             ]
           },
           {
+            "group": "Automations",
+            "pages": [
+              "automations/overview",
+              "automations/create-automation",
+              "automations/triggers-and-actions"
+            ]
+          },
+          {
             "group": "Providers",
             "pages": [
               "providers/overview",
@@ -77,7 +86,8 @@
                 "group": "Social Platforms",
                 "expanded": true,
                 "pages": [
-                  "providers/instagram"
+                  "providers/instagram",
+                  "providers/linkedin"
                 ]
               },
               {
@@ -165,6 +175,7 @@
             "group": "Provider Settings",
             "pages": [
               "public-api/providers/instagram-standalone",
+              "public-api/providers/linkedin",
               "public-api/providers/youtube"
             ]
           }

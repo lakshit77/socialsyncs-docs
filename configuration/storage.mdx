@@ -1,0 +1,91 @@
+---
+title: Custom Storage (Cloudflare R2)
+description: 'Store your uploads in your own Cloudflare R2 bucket'
+---
+
+By default, the media you upload to SocialSyncs is stored on SocialSyncs' own storage. If you'd rather keep your files in your own infrastructure, you can connect a **Cloudflare R2** bucket from **Settings → Storage**. Once connected, every new upload is written to your bucket and served from your domain.
+
+<Info>
+Leave the Storage settings empty to keep using the default SocialSyncs storage. Connecting your own bucket is entirely optional.
+</Info>
+
+<Note>
+**Who can set this up:** the Storage tab is available to **workspace admins**. Settings apply to the whole workspace (organization).
+</Note>
+
+## What you'll need
+
+- A [Cloudflare account](https://dash.cloudflare.com/) with **R2** enabled.
+- An R2 **bucket** to store your files.
+- An R2 **API token** with **Object Read & Write** permission on that bucket.
+- A **public URL** for the bucket (a Cloudflare custom domain or the bucket's `r2.dev` address) so uploaded media can be displayed.
+
+## Set up Cloudflare R2
+
+<Steps>
+  <Step title="Create a bucket">
+    In the [Cloudflare dashboard](https://dash.cloudflare.com/), open **R2** and create a new bucket. Choose the **Standard** storage class and leave the location as **Automatic**.
+  </Step>
+
+  <Step title="Create an R2 API token">
+    Still in R2, open **Manage R2 API Tokens** and create a token with the **Object Read & Write** permission. For better security, scope it to the single bucket you just created.
+
+    When the token is created, copy the **Access Key ID** and **Secret Access Key** — the secret is shown only once. Also note your **Account ID** from the R2 overview page.
+  </Step>
+
+  <Step title="Enable public access">
+    Files need a public URL to be displayed in posts. Either:
+
+    - **Connect a custom domain** to the bucket (recommended) — e.g. `https://cdn.yourdomain.com`, or
+    - **Enable the bucket's `r2.dev` development URL** — e.g. `https://your-bucket.r2.dev`.
+
+    This address is your **Public Bucket URL**.
+  </Step>
+</Steps>
+
+## Connect it in SocialSyncs
+
+<Steps>
+  <Step title="Open Settings → Storage">
+    In SocialSyncs, go to **Settings** and open the **Storage** tab ("Custom Cloudflare R2 Storage").
+  </Step>
+
+  <Step title="Fill in your bucket details">
+    Enter the values you collected above:
+
+    | Field | What to enter |
+    |---|---|
+    | **Account ID** | Your Cloudflare account ID. |
+    | **Access Key ID** | The R2 API token's access key. |
+    | **Secret Access Key** | The R2 API token's secret key. |
+    | **Bucket Name** | The exact name of your R2 bucket. |
+    | **Public Bucket URL** | Your custom domain or `r2.dev` URL (no trailing slash). |
+    | **Region** | Optional — leave as `auto` unless you have a reason to pin a region. |
+  </Step>
+
+  <Step title="Test the connection">
+    Use **Test connection** to verify your credentials. SocialSyncs writes a tiny test object to your bucket to confirm the token can upload. If it fails, re-check the keys, bucket name, and that the token has write permission.
+
+    <Info>
+    The test leaves a small file named `.postiz-connection-test-…` in your bucket. It's harmless, but you can delete it from the Cloudflare dashboard if you prefer.
+    </Info>
+  </Step>
+
+  <Step title="Save">
+    Save your settings. From now on, **new uploads** are stored in your R2 bucket and served from your Public Bucket URL.
+  </Step>
+</Steps>
+
+## How it behaves
+
+- **New uploads only.** Switching storage affects files uploaded *after* you save. Media you uploaded earlier stays where it is and its links keep working.
+- **Your secret is protected.** The Secret Access Key is encrypted at rest and shown as `••••••••` after saving. To change or re-test it later, re-enter the secret.
+- **Reverting is easy.** Remove your credentials (or leave the fields empty) to switch back to the default SocialSyncs storage. Again, existing files are unaffected.
+
+<Warning>
+If you're updating an existing configuration, you must **re-enter the Secret Access Key** to run the connection test or to save changes — it isn't stored in the form for security.
+</Warning>
+
+## Editing keys vs. self-hosting
+
+This page covers connecting a bucket from the in-app **Settings → Storage** panel. If you self-host SocialSyncs and prefer to configure storage with environment variables instead, see the [R2 Configuration](/configuration/r2) guide.

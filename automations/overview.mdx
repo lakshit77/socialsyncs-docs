@@ -1,0 +1,77 @@
+---
+title: Automations Overview
+description: 'Automatically reply to comments, story replies, and DMs on Instagram'
+---
+
+Automations let your connected channels respond to your audience on their own. When someone comments on a post or reel, replies to a story, or sends you a direct message, SocialSyncs can reply to the comment publicly and follow up in the DMs — instantly, around the clock, without you lifting a finger.
+
+<Info>
+**Supported platforms**
+
+Automations are currently available for **Instagram** (Business or Creator accounts). Each automation runs against a single connected Instagram channel.
+</Info>
+
+## What you can automate
+
+<CardGroup cols={3}>
+  <Card title="Comments" icon="comment">
+    Reply publicly to comments on your posts and reels, then continue the conversation in the DMs.
+  </Card>
+  <Card title="Story replies" icon="circle-play">
+    Respond automatically when someone replies to your story.
+  </Card>
+  <Card title="Direct messages" icon="paper-plane">
+    Trigger a flow when a DM contains specific keywords.
+  </Card>
+</CardGroup>
+
+## How it works
+
+Every automation is built from one **trigger** and one or more **actions**:
+
+1. **A trigger** decides *when* the automation runs — for example, "a comment on any reel that contains the word `price`."
+2. **Actions** decide *what happens* — for example, "reply to the comment publicly, then send a DM with a link."
+
+Instagram notifies SocialSyncs in real time the moment the trigger event happens. SocialSyncs checks the event against your rules (keywords and which posts/stories it applies to), and if it matches, runs your actions in order.
+
+<Note>
+Learn the building blocks in [Triggers & Actions](/automations/triggers-and-actions), then follow [Create an Automation](/automations/create-automation) to put them together.
+</Note>
+
+## Prerequisites
+
+Before you can build an automation, you need:
+
+<Steps>
+  <Step title="A professional Instagram account">
+    Automations require an Instagram **Business** or **Creator** account. Personal accounts are not supported by Instagram's automation APIs.
+  </Step>
+  <Step title="The Instagram channel connected to SocialSyncs">
+    Connect your Instagram account as a channel first. The connection must include permission to **manage comments and messages**. See the [Instagram provider guide](/providers/instagram) for the connection steps.
+  </Step>
+</Steps>
+
+## Understanding the dashboard
+
+The Automations page lists every automation for the selected channel, along with four headline stats:
+
+| Stat | Meaning |
+|---|---|
+| **Total Automations** | How many automations exist for this channel (active or not). |
+| **Active** | How many are currently switched on and listening for events. |
+| **Successful Fires** | The number of times an automation ran and completed its actions successfully. |
+| **Failed Fires** | The number of times an automation matched but an action could not be delivered. |
+
+Each automation in the table shows its **Name**, **Trigger**, the **Actions** it performs, its individual success / failure count, and an **Active** toggle you can flip at any time. Switching an automation off stops it from responding without deleting your configuration.
+
+## Good to know
+
+<Warning>
+**Instagram's 24-hour messaging window**
+
+Instagram only allows you to send direct messages to a person within **24 hours** of their last interaction with you. Automations that send DMs work within this window — which is exactly why comment, story-reply, and DM triggers are ideal, since the person has just engaged with you.
+</Warning>
+
+- Automations respond to engagement that happens **after** they are switched on — they don't act on past comments or messages.
+- Replies to comments are posted **publicly**; the welcome message and your primary DM are delivered **privately** in the DMs.
+- You can run several automations on the same channel at once (for example, one per keyword or campaign).

@@ -1,0 +1,120 @@
+---
+title: Create an Automation
+description: 'Build an Instagram automation step by step with the four-step builder'
+---
+
+Creating an automation takes two parts: first you pick **what triggers it**, then you walk through a **four-step builder** — Post / Story → Keywords → Actions → Review. This guide uses the most common setup (a comment-to-DM flow) as the example and notes where the other triggers differ.
+
+Before you start, make sure your Instagram channel is connected — see [Prerequisites](/automations/overview#prerequisites).
+
+## Start a new automation
+
+<Steps>
+  <Step title="Open Automations and select a channel">
+    Go to **Automations** in the sidebar and choose the Instagram account you want to automate from the **Channels** list. Click **Create Automation**.
+  </Step>
+  <Step title="Choose what should trigger it">
+    The **Create Automation** dialog asks *"What should trigger this automation?"* Pick one:
+
+    - **Comments on your Post or Reel**
+    - **Replies to your Story**
+    - **Sends you a DM**
+
+    Your choice opens the four-step builder. The example below uses **Comments on your Post or Reel**.
+  </Step>
+</Steps>
+
+## Step 1 — Post / Story
+
+Choose which content the automation listens to. For the **Comments** trigger you'll see *"Which posts should trigger this automation?"* with three options:
+
+| Option | What it does |
+|---|---|
+| **Specific posts or reels** | Pick exactly which posts/reels trigger it. A grid of your posts appears below — select one or more. |
+| **Any post or reel** | Triggers on comments on **all** your posts. |
+| **Upcoming posts** | Automatically applies to posts you publish **from now on**. |
+
+<Info>
+- The **Replies to your Story** trigger shows the same three choices for stories (**Specific stories / Any story / Upcoming stories**).
+- The **Sends you a DM** trigger has no post or story to choose, so this step simply tells you to continue to keywords.
+</Info>
+
+If you chose **Specific**, you must select at least one item before you can continue. Click **Next**.
+
+## Step 2 — Keywords
+
+Decide *which* comments (or messages) should set the automation off:
+
+- **Comments containing specific keywords** — only fires when the comment contains one of your keywords.
+- **Any comment** — fires on every comment, regardless of content.
+
+When using specific keywords:
+
+- **Keywords** — type a word and press Enter or **+ Add**. Up to **25** keywords. (e.g. `price`, `link`, `guide`)
+- **+ Add excluded keywords** — optional words that *block* the automation if present (e.g. `spam`).
+- **Allow partial keyword matching** — also matches close variations and typos of your keywords.
+
+<Note>
+**Auto-reply publicly to comments** *(Comments trigger only)*
+
+In this step you'll also see an **Auto-reply publicly to comments** toggle. Turn it on to post a public reply under the comment, then add up to **5** reply variants (one is chosen at random each time, so replies look natural) — for example `Check your DMs 👋`. Replies to stories and DMs have no public reply, so this toggle doesn't appear for those triggers.
+</Note>
+
+Click **Next**.
+
+## Step 3 — Actions (Set up your DM flow)
+
+Configure what happens in the DMs once someone triggers the automation. There are three toggles, and they run in this order:
+
+<Steps>
+  <Step title="Send a welcome message">
+    An opening DM the person taps to opt in. Configure:
+    - **Message** (up to 640 characters) — personalize it with **Insert** variables: **First name**, **Username**, **Trigger date**, **Comment text**.
+    - **Subtitle** (up to 80 characters).
+    - A fixed **"Let's Chat! 💬"** button — tapping it lets SocialSyncs deliver the rest of the flow.
+  </Step>
+  <Step title="Ask to follow first (optional)">
+    Prompts the person to follow you before they get the rest. This toggle is **locked until "Send a welcome message" is enabled**. It includes fixed **"Visit profile"** and **"✅ I am following"** buttons; SocialSyncs verifies the follow before continuing, and skips this step automatically if they already follow you.
+  </Step>
+  <Step title="Send the primary DM">
+    The main message — usually your link or offer. Choose a **DM format**:
+
+    | Format | Description |
+    |---|---|
+    | **Text + Buttons** | A message with optional quick-reply or link buttons (up to 3 per message). |
+    | **Image / Video** | A single image or video with no text body. |
+    | **Carousel** | Up to 10 swipeable cards, each with a title and buttons. |
+  </Step>
+</Steps>
+
+<Tip>
+You don't have to enable all three. A pure public-reply automation (just the Step 2 auto-reply, no DM flow) is valid, and so is a single **Send the primary DM**.
+</Tip>
+
+Click **Next**.
+
+## Step 4 — Review & launch
+
+<Steps>
+  <Step title="Name your automation">
+    Enter an **Automation name** (required) — for example `Comment reply → DM`. The name is only for you; your audience never sees it.
+  </Step>
+  <Step title="Review the summary">
+    The **Review** timeline shows your trigger (type, posts, keywords) and each action in order. Use **Back** to fix anything.
+  </Step>
+  <Step title="Launch">
+    Click **Launch automation**. It's created as **Active** and immediately starts listening for new events.
+  </Step>
+</Steps>
+
+## Test your automation
+
+From another Instagram account, comment your keyword on the targeted post or reel. You should see the public reply (if you enabled it), followed by the welcome message in that account's DMs.
+
+<Note>
+Open the automation to watch its **Successful Fires** and **Failed Fires** counts. A failed fire usually means a DM couldn't be delivered — most often because Instagram's [24-hour messaging window](/automations/overview#good-to-know) had closed, or the channel needs reconnecting.
+</Note>
+
+## Editing later
+
+Open any automation to reopen the same four-step builder with your settings pre-filled; the final button reads **Save changes** instead of Launch automation. You can also flip the **Active** toggle on the dashboard to pause an automation without deleting it.

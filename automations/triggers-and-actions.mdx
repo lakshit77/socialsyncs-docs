@@ -1,0 +1,107 @@
+---
+title: Triggers & Actions
+description: 'Every trigger, targeting option, and DM action in the automation builder'
+---
+
+Each automation has **one trigger** (chosen when you click **Create Automation**) and is configured through the four-step builder. This page is the full reference for every option you'll see.
+
+## Triggers
+
+When you create an automation you first answer *"What should trigger this automation?"* and pick one of three:
+
+| Trigger | Fires when… | Can post a public reply? |
+|---|---|---|
+| **Comments on your Post or Reel** | Someone comments on your post or reel | Yes |
+| **Replies to your Story** | Someone replies to your story | No (replies arrive as DMs) |
+| **Sends you a DM** | Someone sends your account a direct message | No |
+
+## Step 1 — Choose the content (Post / Story)
+
+This step decides which posts or stories the automation watches.
+
+**Comments trigger:**
+
+- **Specific posts or reels** — pick exactly which ones (select at least one from the grid).
+- **Any post or reel** — applies to all your posts.
+- **Upcoming posts** — applies to everything you publish from now on.
+
+**Story trigger:** the same three choices for stories — **Specific stories**, **Any story**, **Upcoming stories**.
+
+**DM trigger:** has no content to choose, so this step is skipped (it just prompts you to continue).
+
+## Step 2 — Targeting & keywords
+
+Decide which comments or messages qualify:
+
+- **Comments / Messages containing specific keywords** — only fires when the text contains one of your keywords.
+- **Any comment / Any message** — fires on everything, regardless of content.
+
+When matching on keywords:
+
+| Option | Details |
+|---|---|
+| **Keywords** | The words to match — up to **25**. Matching is case-insensitive. |
+| **Excluded keywords** | Optional. If the text contains any of these, the automation is skipped. |
+| **Allow partial keyword matching** | Also matches text that is close to your keywords, even with typos or slight variations. |
+
+### Auto-reply publicly to comments
+
+Available **only with the Comments trigger**, this toggle lives in the Keywords step. When on, SocialSyncs posts a **public reply** under the comment.
+
+- Add up to **5** reply variants — one is picked at random each time so replies don't look repetitive.
+- Each variant can be up to 500 characters.
+
+## Step 3 — The DM flow (Actions)
+
+The Actions step is titled **"Set up your DM flow."** It has three toggles, run in order:
+
+### Send a welcome message
+
+An opening DM with a button the person taps to opt in (Instagram requires this opt-in before you can fully message someone).
+
+- **Message** — the main text, up to **640** characters, with personalization variables.
+- **Subtitle** — optional, up to **80** characters.
+- A fixed **"Let's Chat! 💬"** button (label editable; the button itself can't be removed).
+
+### Ask to follow first
+
+Invites the person to follow you before continuing. **Locked until "Send a welcome message" is enabled.**
+
+- **Message** and **Subtitle**, same limits as above.
+- Two fixed buttons: **"Visit profile"** and **"✅ I am following."**
+- SocialSyncs verifies the follow before moving on, and skips this step if the person already follows you.
+
+### Send the primary DM
+
+The main payoff message. Pick a **DM format**:
+
+| Format | Description |
+|---|---|
+| **Text + Buttons** | A message with optional quick-reply or link buttons. |
+| **Image / Video** | A single image or video with no text body. |
+| **Carousel** | Up to **10** swipeable cards, each with a title and buttons. |
+
+Each message/card supports up to **3** buttons, which can be a **link** (URL) or a **quick reply** (postback).
+
+<Note>
+None of the three DM actions are mandatory. You can build a comment automation that only posts a public reply, or one that sends a single primary DM with no welcome step.
+</Note>
+
+## Personalize with variables
+
+In any message field, use **Insert** to drop in a variable that's filled per person:
+
+| Variable | Inserts |
+|---|---|
+| **First name** | `{{first_name}}` — first name from the username |
+| **Username** | `{{user_name}}` — the person's Instagram username |
+| **Trigger date** | `{{last_updated}}` — when the automation was triggered |
+| **Comment text** | `{{comment_text}}` — the comment they left (Comments trigger) |
+
+<Info>
+The available variables match the trigger — for the Story and DM triggers, the message text variable reads **Story reply text** / **DM text** instead of **Comment text**.
+</Info>
+
+<Tip>
+A high-converting comment flow: enable **Auto-reply publicly to comments** (Step 2) → **Send a welcome message** → **Send the primary DM** (Step 3). Add **Ask to follow first** in between if you want people to follow you before they get the link.
+</Tip>
