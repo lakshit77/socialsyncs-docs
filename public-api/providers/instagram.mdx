@@ -95,7 +95,7 @@ To find audio IDs, use the [trigger endpoint](/public-api/integrations/trigger)
 with the `audioSearch` tool:
 
 ```bash
-curl -X POST https://api.postiz.com/public/v1/integration-trigger/{integrationId} \
+curl -X POST https://api.socialsyncs.co/public/v1/integration-trigger/{integrationId} \
   -H "Authorization: your-api-key" \
   -H "Content-Type: application/json" \
   -d '{"methodName": "audioSearch", "data": {"q": "summer vibes", "type": "music"}}'
@@ -243,7 +243,7 @@ Attach audio found with `audioSearch` to a single-video Reel:
           "image": [
             {
               "id": "video-id",
-              "path": "https://uploads.postiz.com/reel.mp4"
+              "path": "https://uploads.socialsyncs.co/reel.mp4"
             }
           ]
         }

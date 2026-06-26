@@ -144,10 +144,10 @@ Search the Instagram audio catalog and attach a track to the Reel
 
 ```bash
 # Find an audio ID
-AUDIO_ID=$(postiz integrations:trigger instagram-id audioSearch \
+AUDIO_ID=$(socialsyncs integrations:trigger instagram-id audioSearch \
   -d '{"q":"summer vibes","type":"music"}' | jq -r '.output[0].id')
 
-postiz posts:create \
+socialsyncs posts:create \
   -c "Reel with trending audio" \
   -m "$VIDEO_URL" \
   -s "2025-01-15T10:00:00Z" \

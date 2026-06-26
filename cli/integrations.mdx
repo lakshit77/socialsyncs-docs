@@ -28,7 +28,7 @@ socialsyncs integrations:list | jq '.[] | select(.identifier=="reddit")'
 If your channels are organized into groups (customers), filter the list to a single group with `--group`:
 
 ```bash
-postiz integrations:list --group "customer-id"
+socialsyncs integrations:list --group "customer-id"
 ```
 
 ## Listing Groups
@@ -36,15 +36,15 @@ postiz integrations:list --group "customer-id"
 List all groups (customers) for your organization to get their IDs:
 
 ```bash
-postiz integrations:groups
+socialsyncs integrations:groups
 ```
 
 This returns a JSON array of `{id, name}` objects. Use a group's `id` with `integrations:list --group` to filter channels:
 
 ```bash
 # Find a group by name, then list its integrations
-GROUP_ID=$(postiz integrations:groups | jq -r '.[] | select(.name=="My Company") | .id')
-postiz integrations:list --group "$GROUP_ID"
+GROUP_ID=$(socialsyncs integrations:groups | jq -r '.[] | select(.name=="My Company") | .id')
+socialsyncs integrations:list --group "$GROUP_ID"
 ```
 
 ## Getting Settings
@@ -103,7 +103,7 @@ socialsyncs integrations:trigger pinterest-id getBoards
 
 **Search Instagram audio for a Reel** (Facebook Business-linked channels only, empty `q` returns trending audio):
 ```bash
-postiz integrations:trigger instagram-id audioSearch -d '{"q":"summer vibes","type":"music"}'
+socialsyncs integrations:trigger instagram-id audioSearch -d '{"q":"summer vibes","type":"music"}'
 ```
 
 ## Discovery Workflow
