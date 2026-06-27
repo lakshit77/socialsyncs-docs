@@ -10,14 +10,15 @@ Mintlify docs have **no `branding.ts`** like the app (`postiz-app/apps/frontend/
 | Primary color | `#2B7DE9` | `PRIMARY_PALETTE['600']` / `btnPrimary` |
 | Light accent | `#4A9AF5` | `PRIMARY_PALETTE['400']` / `accent` |
 | Dark shade | `#0B3D8C` | `PRIMARY_PALETTE['700']` / `btnPrimaryHover` |
-| Logo / favicon | `logo/socialsyncs-icon.svg` | `/socialsyncs-icon.svg` (frontend `public/`) |
+| Logo (icon + wordmark) | `logo/socialsyncs-logo-light.svg`, `logo/socialsyncs-logo-dark.svg` | — |
+| Favicon / icon | `logo/socialsyncs-icon.svg` | `/socialsyncs-icon.svg` (frontend `public/`) |
 | Cloud / domain | `socialsyncs.co` | `DOMAIN` (note: app uses `.com`, docs use `.co`) |
 
 ## Where each lives in `docs.json`
 
 - **Name:** `"name": "SocialSyncs Documentation"`
 - **Colors:** `"colors": { "primary": "#2B7DE9", "light": "#4A9AF5", "dark": "#0B3D8C" }`
-- **Logo:** `"logo": { "light": "/logo/socialsyncs-icon.svg", "dark": "/logo/socialsyncs-icon.svg" }`
+- **Logo:** `"logo": { "light": "/logo/socialsyncs-logo-light.svg", "dark": "/logo/socialsyncs-logo-dark.svg" }` (icon + wordmark)
 - **Favicon:** `"favicon": "/logo/socialsyncs-icon.svg"`
 - **Cloud button:** `"navbar.primary.href": "https://socialsyncs.co"`
 
@@ -45,5 +46,5 @@ These are real upstream/technical names — renaming them would make instruction
 ## To re-theme
 
 1. Edit the `colors` block in `docs.json`.
-2. Replace `logo/socialsyncs-icon.svg` (and update `logo`/`favicon` paths if renamed).
+2. Replace the logo SVGs (`logo/socialsyncs-logo-*.svg`, icon + wordmark) and/or `logo/socialsyncs-icon.svg` (favicon), updating `logo`/`favicon` paths if renamed.
 3. Run `mintlify dev` to preview and `mintlify broken-links` to validate.

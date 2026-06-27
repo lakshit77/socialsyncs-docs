@@ -41,10 +41,15 @@
               "configuration/emails",
               "configuration/uploads",
               "configuration/r2",
-              "configuration/storage",
               "configuration/polotno",
               "configuration/oauth",
               "configuration/chrome-extension"
+            ]
+          },
+          {
+            "group": "Settings",
+            "pages": [
+              "settings/cloudflare-r2"
             ]
           },
           {
@@ -265,8 +270,8 @@
     }
   },
   "logo": {
-    "light": "/logo/socialsyncs-icon.svg",
-    "dark": "/logo/socialsyncs-icon.svg"
+    "light": "/logo/socialsyncs-logo-light.svg",
+    "dark": "/logo/socialsyncs-logo-dark.svg"
   },
   "navbar": {
     "links": [],
