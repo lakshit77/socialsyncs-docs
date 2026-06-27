@@ -68,8 +68,8 @@ Commits: `842be0f`, `5660eeb` (merge), `5d40bfd`, `aa09a65`.
    - Logo + favicon → `logo/socialsyncs-icon.svg` (copied from the app's `public/`).
    - Added `BRANDING.md` — the docs single-source-of-truth brand reference.
    - `mintlify broken-links` passed clean.
-4. **Published a public agent skill** at **`github.com/lakshit77/socialsyncs-agent`**
-   (install: `npx skills add lakshit77/socialsyncs-agent`; uses env `SOCIALSYNCS_API_KEY`).
+4. **Published a public agent skill** at **`github.com/lakshit77/socialsyncs-cli`**
+   (install: `npx skills add lakshit77/socialsyncs-cli`; uses env `SOCIALSYNCS_API_KEY`).
    The docs CLI page (`cli/introduction.mdx`) points the install command at this repo.
 
 ### Session B — provider visibility (this session)

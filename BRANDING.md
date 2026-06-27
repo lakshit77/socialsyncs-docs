@@ -41,7 +41,7 @@ These are real upstream/technical names — renaming them would make instruction
 - Env vars: `POSTIZ_API_KEY`, `POSTIZ_OAUTH_*`, `POSTIZ_GENERIC_OAUTH`, etc. (the app still reads these)
 - Infra placeholders in examples: `postiz-uploads` bucket, `/data/postiz`, `postiz-db-local`, `postiz-user`
 
-> The agent skill published at [github.com/lakshit77/socialsyncs-agent](https://github.com/lakshit77/socialsyncs-agent) uses the rebranded `SOCIALSYNCS_API_KEY` env var, separate from the app's internal `POSTIZ_API_KEY`.
+> The agent skill published at [github.com/lakshit77/socialsyncs-cli](https://github.com/lakshit77/socialsyncs-cli) uses the rebranded `SOCIALSYNCS_API_KEY` env var, separate from the app's internal `POSTIZ_API_KEY`.
 
 ## To re-theme
 
