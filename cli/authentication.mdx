@@ -31,7 +31,7 @@ socialsyncs auth:logout
 Alternatively, set your SocialSyncs API key as an environment variable:
 
 ```bash
-export POSTIZ_API_KEY=your_api_key_here
+export SOCIALSYNCS_API_KEY=your_api_key_here
 ```
 
 You can get your API key from the SocialSyncs Settings page.
@@ -44,11 +44,11 @@ OAuth2 credentials take priority over the API key when both are present.
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
-| `POSTIZ_API_KEY` | No* | - | Your SocialSyncs API key |
-| `POSTIZ_API_URL` | No | `https://app.socialsyncs.co/api` | Custom API endpoint (for self-hosted SocialSyncs) |
-| `POSTIZ_AUTH_SERVER` | No | `https://cli-auth.socialsyncs.co` | Custom auth server URL (for self-hosted auth server) |
+| `SOCIALSYNCS_API_KEY` | No* | - | Your SocialSyncs API key |
+| `SOCIALSYNCS_API_URL` | No | `https://app.socialsyncs.co/api` | Custom API endpoint (for self-hosted SocialSyncs) |
+| `SOCIALSYNCS_AUTH_SERVER` | No | `https://cli-auth.socialsyncs.co` | Custom auth server URL (for self-hosted auth server) |
 
-*Either OAuth2 (via `socialsyncs auth:login`) or `POSTIZ_API_KEY` is required.
+*Either OAuth2 (via `socialsyncs auth:login`) or `SOCIALSYNCS_API_KEY` is required.
 
 ## Self-Hosting the Auth Server
 
@@ -106,20 +106,20 @@ Create a database. The server auto-creates the `device_requests` table on startu
 
 ```bash
 export DATABASE_URL="postgresql://user:password@localhost:5432/socialsyncs_auth"
-export POSTIZ_OAUTH_CLIENT_ID="pca_xxx"
-export POSTIZ_OAUTH_CLIENT_SECRET="pcs_xxx"
+export SOCIALSYNCS_OAUTH_CLIENT_ID="pca_xxx"
+export SOCIALSYNCS_OAUTH_CLIENT_SECRET="pcs_xxx"
 export SERVER_URL="https://your-server-domain.com"
 ```
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
 | `DATABASE_URL` | Yes | - | Postgres connection string |
-| `POSTIZ_OAUTH_CLIENT_ID` | Yes | - | OAuth app client ID from SocialSyncs |
-| `POSTIZ_OAUTH_CLIENT_SECRET` | Yes | - | OAuth app client secret from SocialSyncs |
+| `SOCIALSYNCS_OAUTH_CLIENT_ID` | Yes | - | OAuth app client ID from SocialSyncs |
+| `SOCIALSYNCS_OAUTH_CLIENT_SECRET` | Yes | - | OAuth app client secret from SocialSyncs |
 | `PORT` | No | `3111` | Server port |
 | `SERVER_URL` | No | `http://localhost:{PORT}` | Public URL of this server |
-| `POSTIZ_FRONTEND_URL` | No | `https://app.socialsyncs.co` | SocialSyncs frontend URL for OAuth redirects |
-| `POSTIZ_API_URL` | No | `https://app.socialsyncs.co/api` | SocialSyncs API URL for token exchange |
+| `SOCIALSYNCS_FRONTEND_URL` | No | `https://app.socialsyncs.co` | SocialSyncs frontend URL for OAuth redirects |
+| `SOCIALSYNCS_API_URL` | No | `https://app.socialsyncs.co/api` | SocialSyncs API URL for token exchange |
 
 ### 5. Run the Server
 
@@ -137,7 +137,7 @@ pnpm start:prod
 ### 6. Point the CLI to Your Server
 
 ```bash
-export POSTIZ_AUTH_SERVER="https://your-server-domain.com"
+export SOCIALSYNCS_AUTH_SERVER="https://your-server-domain.com"
 socialsyncs auth:login
 ```
 

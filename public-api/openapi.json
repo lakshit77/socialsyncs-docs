@@ -1970,6 +1970,399 @@
         }
       }
     },
+    "/automations": {
+      "get": {
+        "tags": [
+          "Automations"
+        ],
+        "summary": "List automations",
+        "description": "Get all automation workflows for your organization. Optionally filter by integration (channel).",
+        "parameters": [
+          {
+            "name": "integrationId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filter automations by a specific integration (channel) ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Automation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Automations"
+        ],
+        "summary": "Create automation",
+        "description": "Create a new automation workflow. `events` must contain exactly one trigger event with its nested actions.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAutomationRequest"
+              },
+              "example": {
+                "name": "Comment Reply Flow",
+                "integration_id": "your-integration-id",
+                "is_active": true,
+                "events": [
+                  {
+                    "event_type": "trigger",
+                    "event_category": "post_comment",
+                    "event_uuid": "t1",
+                    "previous_event_uuid": null,
+                    "is_active": true,
+                    "event_config": {
+                      "comment_config": {
+                        "all_comments": true,
+                        "keywords": [
+                          "price",
+                          "cost"
+                        ],
+                        "excluded_keywords": [],
+                        "fuzzy_match_allowed": false,
+                        "fuzzy_match_percentage": 80
+                      },
+                      "post_config": {
+                        "all_posts": true,
+                        "post_ids": [],
+                        "upcoming_posts": false
+                      }
+                    },
+                    "actions": [
+                      {
+                        "event_type": "action",
+                        "event_category": "reply_to_comment",
+                        "event_uuid": "a1",
+                        "previous_event_uuid": "t1",
+                        "is_active": true,
+                        "event_config": {
+                          "reply_type": "templates",
+                          "templates": [
+                            "Check your DMs 👋",
+                            "Just sent you a message 📩"
+                          ]
+                        }
+                      },
+                      {
+                        "event_type": "action",
+                        "event_category": "send_dm",
+                        "event_uuid": "a2",
+                        "previous_event_uuid": "a1",
+                        "is_active": true,
+                        "event_config": {
+                          "dm_type": "text_button",
+                          "templates": [
+                            {
+                              "title": "Hey! Here is our pricing: https://example.com/pricing",
+                              "subtitle": "",
+                              "buttons": [],
+                              "media_config": []
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Automation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/automations/{id}": {
+      "get": {
+        "tags": [
+          "Automations"
+        ],
+        "summary": "Get automation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The automation ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Automation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Automations"
+        ],
+        "summary": "Update automation",
+        "description": "Replace an automation workflow with a new configuration (same body shape as create).",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The automation ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAutomationRequest"
+              },
+              "example": {
+                "name": "Comment Reply Flow",
+                "integration_id": "your-integration-id",
+                "is_active": true,
+                "events": [
+                  {
+                    "event_type": "trigger",
+                    "event_category": "post_comment",
+                    "event_uuid": "t1",
+                    "previous_event_uuid": null,
+                    "is_active": true,
+                    "event_config": {
+                      "comment_config": {
+                        "all_comments": true,
+                        "keywords": [
+                          "price",
+                          "cost"
+                        ],
+                        "excluded_keywords": [],
+                        "fuzzy_match_allowed": false,
+                        "fuzzy_match_percentage": 80
+                      },
+                      "post_config": {
+                        "all_posts": true,
+                        "post_ids": [],
+                        "upcoming_posts": false
+                      }
+                    },
+                    "actions": [
+                      {
+                        "event_type": "action",
+                        "event_category": "reply_to_comment",
+                        "event_uuid": "a1",
+                        "previous_event_uuid": "t1",
+                        "is_active": true,
+                        "event_config": {
+                          "reply_type": "templates",
+                          "templates": [
+                            "Check your DMs 👋",
+                            "Just sent you a message 📩"
+                          ]
+                        }
+                      },
+                      {
+                        "event_type": "action",
+                        "event_category": "send_dm",
+                        "event_uuid": "a2",
+                        "previous_event_uuid": "a1",
+                        "is_active": true,
+                        "event_config": {
+                          "dm_type": "text_button",
+                          "templates": [
+                            {
+                              "title": "Hey! Here is our pricing: https://example.com/pricing",
+                              "subtitle": "",
+                              "buttons": [],
+                              "media_config": []
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Automation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Automations"
+        ],
+        "summary": "Delete automation",
+        "description": "Soft-delete an automation workflow.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The automation ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Automation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/automations/{id}/active": {
+      "patch": {
+        "tags": [
+          "Automations"
+        ],
+        "summary": "Toggle active",
+        "description": "Enable or disable an automation without changing its configuration.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The automation ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ToggleActiveRequest"
+              },
+              "example": {
+                "active": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Automation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/automations/{id}/logs": {
+      "get": {
+        "tags": [
+          "Automations"
+        ],
+        "summary": "Get automation logs",
+        "description": "Retrieve paginated execution logs for an automation, most recent first.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The automation ID"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200,
+              "default": 50
+            },
+            "description": "Number of logs to return (1-200)"
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Pagination cursor from a previous response"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutomationLogsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/generate-video": {
       "post": {
         "tags": [
@@ -3408,53 +3801,6 @@
           }
         }
       },
-      "VideoGenerationRequest": {
-        "type": "object",
-        "required": [
-          "type",
-          "output",
-          "customParams"
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "image-text-slides",
-              "veo3"
-            ],
-            "description": "Video generation type"
-          },
-          "output": {
-            "type": "string",
-            "enum": [
-              "vertical",
-              "horizontal"
-            ],
-            "description": "Video orientation"
-          },
-          "customParams": {
-            "type": "object",
-            "properties": {
-              "voice": {
-                "type": "string",
-                "description": "ElevenLabs voice ID (for image-text-slides)"
-              },
-              "prompt": {
-                "type": "string",
-                "description": "Description/script for the video"
-              },
-              "images": {
-                "type": "array",
-                "maxItems": 3,
-                "items": {
-                  "$ref": "#/components/schemas/Media"
-                },
-                "description": "Reference images (for veo3, max 3)"
-              }
-            }
-          }
-        }
-      },
       "TwitchSettings": {
         "title": "Twitch",
         "type": "object",
@@ -3575,6 +3921,241 @@
           "title": {
             "type": "string",
             "description": "Post title"
+          }
+        }
+      },
+      "Automation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "clx1a2b3c4"
+          },
+          "name": {
+            "type": "string",
+            "example": "Comment Reply Flow"
+          },
+          "integrationId": {
+            "type": "string",
+            "example": "your-integration-id"
+          },
+          "triggerType": {
+            "type": "string",
+            "enum": [
+              "COMMENT",
+              "STORY_REPLY",
+              "DM_KEYWORD"
+            ]
+          },
+          "actionType": {
+            "type": "string",
+            "enum": [
+              "SEND_DM",
+              "REPLY_TO_COMMENT"
+            ]
+          },
+          "active": {
+            "type": "boolean",
+            "example": true
+          },
+          "successCount": {
+            "type": "integer",
+            "example": 12
+          },
+          "failureCount": {
+            "type": "integer",
+            "example": 0
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AutomationEvent": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "event_type",
+          "event_category",
+          "event_uuid"
+        ],
+        "properties": {
+          "event_type": {
+            "type": "string",
+            "enum": [
+              "trigger",
+              "action"
+            ]
+          },
+          "event_category": {
+            "type": "string",
+            "description": "Trigger: post_comment | story_reply | user_direct_message. Action: reply_to_comment | welcome_message | ask_to_follow | send_dm"
+          },
+          "event_uuid": {
+            "type": "string"
+          },
+          "previous_event_uuid": {
+            "type": "string",
+            "nullable": true
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "event_config": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "description": "Nested action events (on a trigger event only)"
+          }
+        }
+      },
+      "CreateAutomationRequest": {
+        "type": "object",
+        "required": [
+          "name",
+          "integration_id",
+          "events"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 120,
+            "example": "Comment Reply Flow"
+          },
+          "integration_id": {
+            "type": "string",
+            "example": "your-integration-id"
+          },
+          "is_active": {
+            "type": "boolean",
+            "default": true
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AutomationEvent"
+            },
+            "description": "Exactly one trigger event with nested actions"
+          }
+        }
+      },
+      "ToggleActiveRequest": {
+        "type": "object",
+        "required": [
+          "active"
+        ],
+        "properties": {
+          "active": {
+            "type": "boolean",
+            "example": false,
+            "description": "true to enable, false to disable"
+          }
+        }
+      },
+      "AutomationLog": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "SUCCESS",
+              "FAILED",
+              "MATCHED",
+              "SKIPPED"
+            ]
+          },
+          "matchedKeyword": {
+            "type": "string",
+            "nullable": true
+          },
+          "triggerPayload": {
+            "type": "string",
+            "description": "JSON snapshot of the triggering event"
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalRefId": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AutomationLogsResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AutomationLog"
+            }
+          },
+          "nextCursor": {
+            "type": "string",
+            "nullable": true,
+            "description": "Pass as cursor for the next page; null means no more pages"
+          }
+        }
+      },
+      "VideoGenerationRequest": {
+        "type": "object",
+        "required": [
+          "type",
+          "output",
+          "customParams"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "image-text-slides",
+              "veo3"
+            ],
+            "description": "Video generation type"
+          },
+          "output": {
+            "type": "string",
+            "enum": [
+              "vertical",
+              "horizontal"
+            ],
+            "description": "Video orientation"
+          },
+          "customParams": {
+            "type": "object",
+            "properties": {
+              "voice": {
+                "type": "string",
+                "description": "ElevenLabs voice ID (for image-text-slides)"
+              },
+              "prompt": {
+                "type": "string",
+                "description": "Description/script for the video"
+              },
+              "images": {
+                "type": "array",
+                "maxItems": 3,
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "description": "Reference images (for veo3, max 3)"
+              }
+            }
           }
         }
       }

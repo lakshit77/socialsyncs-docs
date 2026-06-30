@@ -3,7 +3,7 @@ title: Introduction
 description: 'Connect AI agents to SocialSyncs using the Model Context Protocol (MCP)'
 ---
 
-MCP (Model Context Protocol) lets AI agents interact with SocialSyncs directly — listing integrations, scheduling posts, generating images and videos — all through a standardized tool-calling interface.
+MCP (Model Context Protocol) lets AI agents interact with SocialSyncs directly — listing integrations, scheduling posts, and generating images — all through a standardized tool-calling interface.
 
 This means you can connect Claude, ChatGPT, Cursor, or any MCP-compatible client to your SocialSyncs account and manage your social media through natural language.
 
@@ -35,9 +35,12 @@ sequenceDiagram
 | `triggerTool` | Execute platform-specific helpers (e.g., list Discord channels) |
 | `schedulePostTool` | Schedule, draft, or immediately publish posts |
 | `generateImageTool` | Generate AI images for posts |
+
+{/* Video tools hidden from docs:
 | `generateVideoOptions` | List available video generation options |
 | `videoFunctionTool` | Get video generator settings (e.g., available voices) |
 | `generateVideoTool` | Generate videos for posts |
+*/}
 
 ## Authentication
 
